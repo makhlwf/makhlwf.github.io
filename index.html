@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         .container {
             background-color: #fff;
@@ -56,14 +56,6 @@
         .telegram-button button:hover {
             background-color: #0056b3;
         }
-        .profile-picture {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            margin: 20px auto;
-            border: 4px solid #007bff;
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-        }
         .social-links {
             margin-top: 30px;
             display: flex;
@@ -80,12 +72,15 @@
         .social-links a:hover {
             color: #0056b3;
         }
+        .page-load-time {
+            margin-top: 30px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="profile_picture.jpg" alt="Profile Picture" class="profile-picture">
     <h1>My Information</h1>
     <p><strong>Name:</strong> makhlwf</p>
     <p><strong>Age:</strong> 17</p>
@@ -97,6 +92,7 @@
     <div class="telegram-button">
         <button onclick="openTelegram()">Message me on Telegram</button>
     </div>
+    <div class="page-load-time" id="pageLoadTime"></div>
 </div>
 
 <script>
@@ -104,6 +100,11 @@
         var username = "makhlwf";
         window.open("https://t.me/" + username, "_blank");
     }
+
+    window.onload = function() {
+        var loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
+        document.getElementById("pageLoadTime").innerText = "Page loaded in " + loadTime + " milliseconds.";
+    };
 </script>
 
 </body>
