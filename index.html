@@ -81,6 +81,16 @@
             font-style: italic;
             color: #888;
         }
+        .additional-info {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #777;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #999;
+        }
     </style>
 </head>
 <body>
@@ -98,8 +108,15 @@
         <button onclick="openTelegram()">Message me on Telegram</button>
     </div>
     <div class="page-load-time" id="pageLoadTime"></div>
-    <div class="user-country" id="userCountry"></div>
+    <div class="user-country" id="userCountry">Detecting your country...</div>
+    <div class="additional-info">
+        <p>This page is for informational purposes only.</p>
+        <p>No personal data is collected or stored.</p>
+        <p>For any inquiries, contact makhlwf@example.com</p>
+    </div>
 </div>
+
+<div class="footer">© 2024 My Information. All rights reserved.</div>
 
 <script>
     function openTelegram() {
@@ -113,6 +130,7 @@
 
         // Simulate fetching user's country based on IP address
         setTimeout(function() {
+            // Assume user's country is Libya
             document.getElementById("userCountry").innerText = "Your country: Libya";
         }, 2000); // Simulate 2 seconds delay for fetching data
     };
