@@ -6,7 +6,7 @@
     <title>My Information</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
             margin: 0;
             padding: 0;
@@ -18,10 +18,10 @@
         .container {
             background-color: #fff;
             border-radius: 10px;
-            padding: 20px;
+            padding: 40px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 100%;
         }
         h1 {
@@ -35,9 +35,26 @@
         a {
             color: #007bff;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            color: #0056b3;
+        }
+        .telegram-button {
+            margin-top: 20px;
+        }
+        .telegram-button button {
+            background-color: #0088cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .telegram-button button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -49,7 +66,7 @@
     <p><strong>Age:</strong> 17</p>
     <p><strong>Country:</strong> Libya</p>
     <p><strong>Telegram:</strong> <a href="https://t.me/makhlwf" target="_blank">@makhlwf</a></p>
-    <div id="telegramButton">
+    <div class="telegram-button">
         <button onclick="openTelegram()">Message me on Telegram</button>
     </div>
 </div>
