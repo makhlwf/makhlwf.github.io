@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -23,6 +24,8 @@
             text-align: center;
             max-width: 700px;
             width: 100%;
+            flex-grow: 1;
+            margin-bottom: 20px;
         }
         h1 {
             color: #333;
@@ -87,9 +90,15 @@
             color: #777;
         }
         .footer {
-            margin-top: 40px;
             font-size: 14px;
             color: #999;
+            margin-top: auto;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 10px 10px;
         }
     </style>
 </head>
@@ -99,7 +108,7 @@
     <h1>My Information</h1>
     <p><strong>Name:</strong> makhlwf</p>
     <p><strong>Age:</strong> 17</p>
-    <p><strong>Country:</strong> Libya</p>
+    <p><strong>Country:</strong> <span id="userCountry">Detecting your country...</span></p>
     <div class="social-links">
         <a href="https://t.me/makhlwf" target="_blank"><i class="fab fa-telegram"></i></a>
         <!-- Add more social media icons and links here -->
@@ -108,15 +117,13 @@
         <button onclick="openTelegram()">Message me on Telegram</button>
     </div>
     <div class="page-load-time" id="pageLoadTime"></div>
-    <div class="user-country" id="userCountry">Detecting your country...</div>
     <div class="additional-info">
         <p>This page is for informational purposes only.</p>
         <p>No personal data is collected or stored.</p>
-        <p>For any inquiries, contact makhlwf@example.com</p>
     </div>
 </div>
 
-<div class="footer">© 2024 My Information. All rights reserved.</div>
+<div class="footer">For inquiries, contact me on Telegram: <a href="https://t.me/makhlwf" target="_blank">@makhlwf</a></div>
 
 <script>
     function openTelegram() {
@@ -128,11 +135,15 @@
         var loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
         document.getElementById("pageLoadTime").innerText = "Page loaded in " + loadTime + " milliseconds.";
 
-        // Simulate fetching user's country based on IP address
-        setTimeout(function() {
-            // Assume user's country is Libya
-            document.getElementById("userCountry").innerText = "Your country: Libya";
-        }, 2000); // Simulate 2 seconds delay for fetching data
+        // Fetch user's country based on IP address
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('userCountry').innerText = "Your country: " + data.country_name;
+            })
+            .catch(error => {
+                console.error('Error fetching user country:', error);
+            });
     };
 </script>
 
