@@ -76,6 +76,11 @@
             margin-top: 30px;
             color: #666;
         }
+        .user-country {
+            margin-top: 20px;
+            font-style: italic;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +89,7 @@
     <h1>My Information</h1>
     <p><strong>Name:</strong> makhlwf</p>
     <p><strong>Age:</strong> 17</p>
-    <p><strong>Country:</strong> Libya</p>
+    <p><strong>Country:</strong> <span id="country"></span></p>
     <div class="social-links">
         <a href="https://t.me/makhlwf" target="_blank"><i class="fab fa-telegram"></i></a>
         <!-- Add more social media icons and links here -->
@@ -104,6 +109,15 @@
     window.onload = function() {
         var loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
         document.getElementById("pageLoadTime").innerText = "Page loaded in " + loadTime + " milliseconds.";
+
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('country').innerText = data.country_name;
+            })
+            .catch(error => {
+                console.error('Error fetching user country:', error);
+            });
     };
 </script>
 
