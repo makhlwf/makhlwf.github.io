@@ -89,7 +89,7 @@
     <h1>My Information</h1>
     <p><strong>Name:</strong> makhlwf</p>
     <p><strong>Age:</strong> 17</p>
-    <p><strong>Country:</strong> <span id="country"></span></p>
+    <p><strong>Country:</strong> Libya</p>
     <div class="social-links">
         <a href="https://t.me/makhlwf" target="_blank"><i class="fab fa-telegram"></i></a>
         <!-- Add more social media icons and links here -->
@@ -98,6 +98,7 @@
         <button onclick="openTelegram()">Message me on Telegram</button>
     </div>
     <div class="page-load-time" id="pageLoadTime"></div>
+    <div class="user-country" id="userCountry"></div>
 </div>
 
 <script>
@@ -110,14 +111,10 @@
         var loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
         document.getElementById("pageLoadTime").innerText = "Page loaded in " + loadTime + " milliseconds.";
 
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('country').innerText = data.country_name;
-            })
-            .catch(error => {
-                console.error('Error fetching user country:', error);
-            });
+        // Simulate fetching user's country based on IP address
+        setTimeout(function() {
+            document.getElementById("userCountry").innerText = "Your country: Libya";
+        }, 2000); // Simulate 2 seconds delay for fetching data
     };
 </script>
 
